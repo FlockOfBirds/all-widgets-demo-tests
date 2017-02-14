@@ -13,6 +13,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+@Test(priority = 5)
 public class CarouselTest {
     public WebDriver driver;
 
@@ -26,13 +27,15 @@ public class CarouselTest {
         driver = new FirefoxDriver(capability);
 
         driver.get("https://allwidgetdemo.mxapps.io/index.html");
-        driver.findElement(By.cssSelector("#mxui_widget_NavigationTree_1 > div > ul > li:nth-child(6)")).click();
+        driver.findElement(By.cssSelector("div.mx-name-navigationTree2 > div > ul > li:nth-child(6)")).click();
+
     }
 
     @Test(priority = 1)
     public void RenderImages() {
         WebElement imageElement = driver.findElement(By.cssSelector("div.widget-carousel-item.active > img"));
         String src = imageElement.getAttribute("src");
+
         AssertJUnit.assertEquals(src, "https://allwidgetdemo.mxapps.io/img/Carousel$image1.jpg?636209466213251470");
 
     }
@@ -42,6 +45,7 @@ public class CarouselTest {
         driver.findElement(By.cssSelector("div.widget-carousel-control.right")).click();
         WebElement imageElement = driver.findElement(By.cssSelector("div.widget-carousel-item.active > img"));
         String src = imageElement.getAttribute("src");
+
         AssertJUnit.assertEquals(src, "https://allwidgetdemo.mxapps.io/img/Carousel$image3.jpg?636209466213251470");
 
     }
@@ -53,6 +57,7 @@ public class CarouselTest {
         leftNavigationElement.click();
         WebElement imageElement = driver.findElement(By.cssSelector("div.widget-carousel-item.active > img"));
         String src = imageElement.getAttribute("src");
+
         AssertJUnit.assertEquals(src, "https://allwidgetdemo.mxapps.io/img/Carousel$image2.jpg?636209466213251470");
 
     }
